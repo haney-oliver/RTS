@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://ui/selector/selector.gd" id="1_jnb14"]
 
 [node name="Selector" type="ColorRect"]
+z_index = 100
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_jnb14")
