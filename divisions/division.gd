@@ -25,20 +25,22 @@ var is_moving: bool = false
 
 
 func _ready() -> void:
+	global_position = tile_map.map_to_local(tile_map.local_to_map(self.global_position))
 	update_animation_params(starting_direction)
 	
 func _input(_event) -> void:
 	if _event.is_action_pressed("move"):
-		
 		if is_selected:
 			var from: Vector2i = tile_map.local_to_map(self.global_position)
 			var to: Vector2i = tile_map.local_to_map(self.get_global_mouse_position())
 			var path: Array[Vector2i]
 			if not is_moving:
 				path = tile_map.astar.get_id_path(from, to).slice(1)
+				print(path)
 			else:
 				from = tile_map.local_to_map(target_pos)
 				path = tile_map.astar.get_id_path(from, to)
+				print(path)
 			current_point_path = tile_map.astar.get_point_path(
 					from, to
 				)
@@ -48,7 +50,7 @@ func _input(_event) -> void:
 					current_point_path[i] = current_point_path[i] + Vector2(16,16)
 		
 func update_animation_params(_move_input : Vector2) -> void:
-	if _move_input != Vector2.ZERO:
+	if not _move_input == Vector2.ZERO:
 		animation_tree.set(WALK_BLEND_POS, _move_input)
 		animation_tree.set(IDLE_BLEND_POS, _move_input)
 		

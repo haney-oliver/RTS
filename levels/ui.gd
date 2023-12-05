@@ -1,7 +1,7 @@
 class_name UI
 extends Control
 
-@onready var map: TileMap = $"../Map"
+@onready var map: TileMap = $"../../../Map"
 @onready var division: Division = $"../Divisions/Division"
 
 # Called when the node enters the scene tree for the first time.

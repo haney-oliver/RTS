@@ -9,4 +9,4 @@ func _process(_delta):
 func _draw():
 	for division in divisions:
 		if not division.current_point_path.is_empty() and division.is_moving:
-			draw_polyline(division.current_point_path, Color.DARK_RED, 5)
+			draw_polyline(division.current_point_path , Color.DARK_RED, 5)
