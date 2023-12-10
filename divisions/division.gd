@@ -80,13 +80,13 @@ func _physics_process(_delta) -> void:
 				is_moving = false
 
 func get_terrain_speed_modifier(_tile_data: TileData) -> float:
-	if _tile_data:
-		if _tile_data.get_custom_data("Forest"):
+	if _tile_data and _tile_data.get_custom_data("Terrain"):
+		if _tile_data.get_custom_data("Terrain") == "Forest":
 			return 0.8
-		elif _tile_data.get_custom_data("Hills"):
+		elif _tile_data.get_custom_data("Terrain") == "Swamp":
 			return 0.75
-		elif _tile_data.get_custom_data("Swamp"):
+		elif _tile_data.get_custom_data("Terrain") == "Hills":
 			return 0.65
-		elif _tile_data.get_custom_data("Mountains"):
+		elif _tile_data.get_custom_data("Terrain") == "Mountains":
 			return 0.5
 	return 1.0
